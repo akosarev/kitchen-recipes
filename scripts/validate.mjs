@@ -16,6 +16,9 @@ import { join, resolve } from "node:path";
 const DIR = resolve(process.argv[2] || join(import.meta.dirname, "..", "recipes"));
 const ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const PLACEHOLDER = /\{(\w+)\}/g;
+// Keep in sync with kitchen-master js/recipes.js checkRecipe(): the app refuses anything else.
+const UNITS = new Set(["", "g", "ml", "tsp", "tbsp", "cloves"]);
+const KEY = /^[A-Za-z0-9_]{1,40}$/;
 
 /** @type {string[]} */
 const errors = [];
@@ -56,11 +59,11 @@ function checkRecipe(name, r, entry) {
     g.items.forEach((it, ii) => {
       const iat = `${at}.items[${ii}]`;
       if (!isObj(it)) { fail(iat, "must be an object"); return; }
-      if (!isStr(it.k) || !/^\w+$/.test(it.k)) fail(iat, "k must be a word key");
+      if (!isStr(it.k) || !KEY.test(it.k)) fail(iat, "k must be 1-40 letters, digits or _");
       else if (keys.has(it.k)) fail(iat, `duplicate ingredient key "${it.k}"`);
       else keys.add(it.k);
       if (!isNum(it.q) || it.q < 0) fail(iat, "q must be a non-negative number");
-      if (!isStr(it.u)) fail(iat, "u must be a string");
+      if (!isStr(it.u) || !UNITS.has(it.u)) fail(iat, `u must be one of: ${[...UNITS].map(u => JSON.stringify(u)).join(", ")}`);
       if (!isStr(it.n)) fail(iat, "n must be a string");
     });
   });
@@ -75,7 +78,7 @@ function checkRecipe(name, r, entry) {
       const sat = `${at}.steps[${si}]`;
       if (!isObj(s) || !isStr(s.t)) { fail(sat, "needs t (string)"); return; }
       if (s.sub !== undefined && (!Array.isArray(s.sub) || !s.sub.every(isStr))) fail(sat, "sub must be an array of strings");
-      if (s.timer !== undefined && (!Number.isInteger(s.timer) || s.timer <= 0)) fail(sat, "timer must be a positive integer (seconds)");
+      if (s.timer !== undefined && (!Number.isInteger(s.timer) || s.timer <= 0 || s.timer > 86400)) fail(sat, "timer must be whole seconds, 1 to 86400");
       for (const t of [s.t, ...(Array.isArray(s.sub) ? s.sub.filter(isStr) : [])]) {
         for (const [, k] of t.matchAll(PLACEHOLDER)) {
           if (!keys.has(k)) fail(sat, `placeholder {${k}} has no ingredient with that key: "${t}"`);
