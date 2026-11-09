@@ -4,8 +4,9 @@ name: Publish site
 # It is rebuilt when either side changes.
 #
 # Note on the `app` trigger: GitHub runs the workflow file found in the pushed commit, so the
-# deploy in kitchen-master copies this file into every `app` commit. Whatever branch triggers the
-# run, the job below always checks out `main` and `app` explicitly.
+# deploy in kitchen-master copies this file (from `main`, at deploy time) into every `app` commit.
+# Whatever branch triggers the run, the job below always checks out `main` and `app` explicitly,
+# and a run from `app` refuses to publish when its copy of this file differs from main's.
 # The `github-pages` environment must allow deployments from both `main` and `app`
 # (Settings > Environments > github-pages > Deployment branches).
 
@@ -47,6 +48,14 @@ jobs:
         with:
           ref: app
           path: app
+
+      - name: Require the same pipeline as main
+        if: github.ref == 'refs/heads/app'
+        run: |
+          if ! cmp -s main/.github/workflows/pages.yml app/.github/workflows/pages.yml; then
+            echo "::error title=Stale pages.yml::This run comes from branch 'app', whose pages.yml differs from main's. Redeploy kitchen-master (deploy.yml) so 'app' carries the current file. Nothing was published."
+            exit 1
+          fi
 
       - name: Assemble the site
         run: |
