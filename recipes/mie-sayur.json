@@ -1,0 +1,211 @@
+{
+  "id": "mie-sayur",
+  "title": "Mie Goreng Sayur",
+  "sub": "Fried noodles with just vegetables: zucchini, carrot and browned mushrooms.",
+  "time": "about 25 min",
+  "base": 3,
+  "groups": [
+    {
+      "title": "Ingredients",
+      "items": [
+        {
+          "k": "noodles",
+          "q": 375,
+          "u": "g",
+          "n": "egg noodles (mie)"
+        },
+        {
+          "k": "mushrooms",
+          "q": 250,
+          "u": "g",
+          "n": "button mushrooms"
+        },
+        {
+          "k": "zucchini",
+          "q": 1,
+          "u": "",
+          "n": "medium zucchini"
+        },
+        {
+          "k": "carrot",
+          "q": 1,
+          "u": "",
+          "n": "carrot"
+        },
+        {
+          "k": "garlic",
+          "q": 5,
+          "u": "cloves",
+          "n": "garlic"
+        },
+        {
+          "k": "shallot",
+          "q": 3,
+          "u": "",
+          "n": "shallots"
+        },
+        {
+          "k": "sprouts",
+          "q": 150,
+          "u": "g",
+          "n": "bean sprouts"
+        },
+        {
+          "k": "eggs",
+          "q": 3,
+          "u": "",
+          "n": "eggs (optional)"
+        },
+        {
+          "k": "scallion",
+          "q": 4,
+          "u": "",
+          "n": "spring onions"
+        },
+        {
+          "k": "lime",
+          "q": 1,
+          "u": "",
+          "n": "lime"
+        },
+        {
+          "k": "fried",
+          "q": 3,
+          "u": "tbsp",
+          "n": "fried shallots (bawang goreng)"
+        },
+        {
+          "k": "oil1",
+          "q": 2,
+          "u": "tbsp",
+          "n": "oil (for the mushrooms)"
+        },
+        {
+          "k": "oil2",
+          "q": 2,
+          "u": "tbsp",
+          "n": "oil (for the noodles)"
+        }
+      ]
+    },
+    {
+      "title": "Sauce",
+      "items": [
+        {
+          "k": "kecap",
+          "q": 4,
+          "u": "tbsp",
+          "n": "kecap manis"
+        },
+        {
+          "k": "soy",
+          "q": 2,
+          "u": "tbsp",
+          "n": "soy sauce"
+        },
+        {
+          "k": "veg",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "vegetarian stir-fry sauce (or more soy sauce)"
+        },
+        {
+          "k": "flakes",
+          "q": 0.5,
+          "u": "tsp",
+          "n": "chili flakes"
+        }
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "t": "Prep",
+      "time": "0–10 min",
+      "steps": [
+        {
+          "t": "Put a large pot of water on to boil."
+        },
+        {
+          "t": "Cut (all on one plate):",
+          "sub": [
+            "Mushrooms ({mushrooms}): 0.5 cm slices",
+            "Zucchini ({zucchini}): halve lengthwise, then 0.5 cm half-moons",
+            "Carrot ({carrot}): thin matchsticks",
+            "Garlic ({garlic}): finely chopped",
+            "Shallots ({shallot}): thin half-rings",
+            "Bean sprouts ({sprouts}): rinse"
+          ]
+        },
+        {
+          "t": "Spring onions ({scallion}): sliced into rings. Half for the noodles, half on top when serving."
+        },
+        {
+          "t": "Lime ({lime}): cut into wedges."
+        },
+        {
+          "t": "Sauce (in a cup):",
+          "sub": [
+            "{kecap} kecap manis",
+            "{soy} soy sauce",
+            "{veg} vegetarian stir-fry sauce",
+            "{flakes} chili flakes"
+          ]
+        }
+      ]
+    },
+    {
+      "t": "Noodles and mushrooms",
+      "time": "10–16 min",
+      "steps": [
+        {
+          "t": "Noodles ({noodles}) into boiling water for 3–4 min. Drain, rinse with cold water, toss with a few drops of oil.",
+          "timer": 240
+        },
+        {
+          "t": "Meanwhile: heat {oil1} oil in the wok over high heat. Mushrooms in a single layer, don’t touch them for 2 min, then stir and fry 2 min more until browned. Take them out.",
+          "timer": 240
+        }
+      ]
+    },
+    {
+      "t": "Putting it together",
+      "time": "16–24 min",
+      "steps": [
+        {
+          "t": "In the same wok, heat another {oil2} oil over high heat."
+        },
+        {
+          "t": "Fry the garlic and shallots for 30–45 sec.",
+          "timer": 45
+        },
+        {
+          "t": "Add the carrot for 1 min, then the zucchini for 2–3 min more until soft.",
+          "timer": 210
+        },
+        {
+          "t": "Push everything aside, crack in the eggs ({eggs}), scramble 1 min, mix with the vegetables.",
+          "timer": 60
+        },
+        {
+          "t": "Add the noodles, sauce and bean sprouts. Stir-fry 2–3 min, tossing constantly.",
+          "timer": 150
+        },
+        {
+          "t": "Return the mushrooms and half the spring onions, toss 30 sec.",
+          "timer": 30
+        }
+      ]
+    },
+    {
+      "t": "Serve",
+      "time": "",
+      "steps": [
+        {
+          "t": "Plate up, sprinkle with fried shallots ({fried}) and the remaining spring onions. Serve with lime wedges."
+        }
+      ]
+    }
+  ],
+  "tip": "Leave the mushrooms alone for the first 2 minutes so they brown instead of stewing. Skip the eggs and it’s fully vegan."
+}

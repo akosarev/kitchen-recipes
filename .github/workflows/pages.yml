@@ -1,0 +1,83 @@
+name: Publish site
+
+# The site = the app (branch `app`, written by kitchen-master's CI) + the recipes (branch `main`).
+# It is rebuilt when either side changes.
+#
+# Note on the `app` trigger: GitHub runs the workflow file found in the pushed commit, so the
+# deploy in kitchen-master copies this file into every `app` commit. Whatever branch triggers the
+# run, the job below always checks out `main` and `app` explicitly.
+# The `github-pages` environment must allow deployments from both `main` and `app`
+# (Settings > Environments > github-pages > Deployment branches).
+
+on:
+  push:
+    branches: [main, app]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the recipes (main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: main
+
+      - name: Validate recipes
+        run: node main/scripts/validate.mjs main/recipes
+
+      - name: Require the app branch
+        run: |
+          if ! git -C main ls-remote --exit-code --heads origin app >/dev/null; then
+            echo "::error title=No app branch::Branch 'app' does not exist yet. It is created by the kitchen-master deploy (deploy.yml). Nothing was published."
+            exit 1
+          fi
+
+      - name: Check out the app (app)
+        uses: actions/checkout@v4
+        with:
+          ref: app
+          path: app
+
+      - name: Assemble the site
+        run: |
+          mkdir _site
+          # The app files, without git metadata or the workflow carrier copy.
+          tar -C app --exclude=./.git --exclude=./.github -cf - . | tar -C _site -xf -
+          rm -rf _site/recipes
+          cp -R main/recipes _site/recipes
+          touch _site/.nojekyll
+          for f in index.html sw.js precache.js manifest.webmanifest recipes/index.json; do
+            if [ ! -f "_site/$f" ]; then
+              echo "::error title=Incomplete site::_site/$f is missing; refusing to publish."
+              exit 1
+            fi
+          done
+          find _site -type f | sort
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
