@@ -1,0 +1,344 @@
+{
+  "id": "mie-tofu",
+  "title": "Mie Padje + Priauw Waan Tofu",
+  "sub": "Fried noodles and crispy sweet-and-sour tofu. Two dishes, ready at the same time.",
+  "time": "about 45 min",
+  "base": 3,
+  "groups": [
+    {
+      "title": "For the tofu",
+      "items": [
+        {
+          "k": "tofu",
+          "q": 600,
+          "u": "g",
+          "n": "tofu"
+        },
+        {
+          "k": "starch",
+          "q": 4.5,
+          "u": "tbsp",
+          "n": "cornstarch (to coat the tofu)"
+        },
+        {
+          "k": "oilFry",
+          "q": 4,
+          "u": "tbsp",
+          "n": "oil (to fry the tofu)"
+        },
+        {
+          "k": "garlicT",
+          "q": 5,
+          "u": "cloves",
+          "n": "garlic"
+        },
+        {
+          "k": "onion",
+          "q": 1,
+          "u": "",
+          "n": "large onion"
+        },
+        {
+          "k": "pepper",
+          "q": 1.5,
+          "u": "",
+          "n": "red bell pepper"
+        },
+        {
+          "k": "cucumber",
+          "q": 0.75,
+          "u": "",
+          "n": "cucumber"
+        },
+        {
+          "k": "tomato",
+          "q": 3,
+          "u": "",
+          "n": "tomatoes"
+        },
+        {
+          "k": "pineapple",
+          "q": 225,
+          "u": "g",
+          "n": "pineapple"
+        },
+        {
+          "k": "kecapT",
+          "q": 2,
+          "u": "tbsp",
+          "n": "kecap manis"
+        },
+        {
+          "k": "sugar",
+          "q": 1,
+          "u": "tbsp",
+          "n": "sugar"
+        },
+        {
+          "k": "vinegar",
+          "q": 3,
+          "u": "tbsp",
+          "n": "rice vinegar"
+        },
+        {
+          "k": "soyT",
+          "q": 0.5,
+          "u": "tbsp",
+          "n": "soy sauce"
+        },
+        {
+          "k": "water",
+          "q": 150,
+          "u": "ml",
+          "n": "water"
+        },
+        {
+          "k": "starchS",
+          "q": 1.5,
+          "u": "tsp",
+          "n": "cornstarch (for the sauce)"
+        },
+        {
+          "k": "starchW",
+          "q": 3,
+          "u": "tbsp",
+          "n": "water (for the slurry)"
+        },
+        {
+          "k": "oilT",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "oil (for the sauce)"
+        }
+      ]
+    },
+    {
+      "title": "For the noodles",
+      "items": [
+        {
+          "k": "noodles",
+          "q": 375,
+          "u": "g",
+          "n": "egg noodles (mie)"
+        },
+        {
+          "k": "oilN",
+          "q": 3,
+          "u": "tbsp",
+          "n": "oil"
+        },
+        {
+          "k": "garlicN",
+          "q": 5,
+          "u": "cloves",
+          "n": "garlic"
+        },
+        {
+          "k": "shallot",
+          "q": 3,
+          "u": "",
+          "n": "shallots"
+        },
+        {
+          "k": "carrot",
+          "q": 1,
+          "u": "",
+          "n": "large carrot"
+        },
+        {
+          "k": "cabbage",
+          "q": 225,
+          "u": "g",
+          "n": "cabbage"
+        },
+        {
+          "k": "sprouts",
+          "q": 150,
+          "u": "g",
+          "n": "bean sprouts"
+        },
+        {
+          "k": "eggs",
+          "q": 3,
+          "u": "",
+          "n": "eggs"
+        },
+        {
+          "k": "kecapN",
+          "q": 3,
+          "u": "tbsp",
+          "n": "kecap manis"
+        },
+        {
+          "k": "soyN",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "soy sauce"
+        },
+        {
+          "k": "oyster",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "oyster sauce"
+        },
+        {
+          "k": "wpepper",
+          "q": 0.33,
+          "u": "tsp",
+          "n": "white pepper"
+        },
+        {
+          "k": "scallion",
+          "q": 6,
+          "u": "",
+          "n": "spring onions (for both dishes)"
+        }
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "t": "Prep",
+      "time": "0–10 min",
+      "steps": [
+        {
+          "t": "Tofu ({tofu}): drain, place between paper towels and press under a light weight (a board and a couple of cans). Press fresh soft tofu very gently.",
+          "timer": 600
+        },
+        {
+          "t": "Put a large pot of water on to boil for the noodles."
+        },
+        {
+          "t": "Cut for the tofu (on one plate):",
+          "sub": [
+            "Garlic ({garlicT}): finely chopped",
+            "Onion ({onion}): halve, cut each half into 4 wedges, separate into petals",
+            "Bell pepper ({pepper}): 2–3 cm chunks",
+            "Cucumber ({cucumber}): 2 cm chunks",
+            "Tomatoes ({tomato}): each into 8 wedges",
+            "Pineapple ({pineapple}): bite-size pieces"
+          ]
+        },
+        {
+          "t": "Cut for the noodles (on a second plate):",
+          "sub": [
+            "Garlic ({garlicN}): finely chopped",
+            "Shallots ({shallot}): thin half-rings",
+            "Carrot ({carrot}): thin matchsticks",
+            "Cabbage ({cabbage}): thin strips",
+            "Bean sprouts ({sprouts}): rinse"
+          ]
+        },
+        {
+          "t": "Spring onions ({scallion}): sliced into rings. Half for the noodles, half for the tofu."
+        },
+        {
+          "t": "Tofu sauce (cup 1):",
+          "sub": [
+            "{kecapT} kecap manis",
+            "{sugar} sugar",
+            "{vinegar} rice vinegar",
+            "{soyT} soy sauce",
+            "{water} water"
+          ]
+        },
+        {
+          "t": "Slurry (cup 2): {starchS} cornstarch + {starchW} water."
+        },
+        {
+          "t": "Noodle sauce (cup 3):",
+          "sub": [
+            "{kecapN} kecap manis",
+            "{soyN} soy sauce",
+            "{oyster} oyster sauce",
+            "{wpepper} white pepper"
+          ]
+        }
+      ]
+    },
+    {
+      "t": "Tofu and boiling the noodles",
+      "time": "10–25 min",
+      "steps": [
+        {
+          "t": "Cut the tofu into 2 cm cubes and toss in {starch} cornstarch."
+        },
+        {
+          "t": "Heat {oilFry} oil in the wok over high heat."
+        },
+        {
+          "t": "Fry the tofu in two batches, 7–8 min each, turning, until golden and crisp. Drain on paper towels.",
+          "timer": 450
+        },
+        {
+          "t": "Meanwhile: noodles ({noodles}) into boiling water for 3–4 min. Drain, rinse with cold water, toss with a few drops of oil.",
+          "timer": 240
+        }
+      ]
+    },
+    {
+      "t": "Noodles",
+      "time": "25–35 min",
+      "steps": [
+        {
+          "t": "In the same wok, heat {oilN} oil over high heat."
+        },
+        {
+          "t": "Fry the garlic and shallots for 30–45 sec.",
+          "timer": 45
+        },
+        {
+          "t": "Add the carrot and cabbage, stir-fry 2–3 min.",
+          "timer": 150
+        },
+        {
+          "t": "Push the vegetables aside, crack in the eggs ({eggs}), scramble 1 min, mix with the vegetables.",
+          "timer": 60
+        },
+        {
+          "t": "Add the noodles and noodle sauce, stir-fry 2–3 min, tossing constantly.",
+          "timer": 150
+        },
+        {
+          "t": "Add the bean sprouts and half the spring onions, 30 sec.",
+          "timer": 30
+        },
+        {
+          "t": "Transfer to a dish and cover with a lid or plate."
+        }
+      ]
+    },
+    {
+      "t": "Sweet-and-sour tofu",
+      "time": "35–45 min",
+      "steps": [
+        {
+          "t": "Wipe the wok with a paper towel and add {oilT} oil."
+        },
+        {
+          "t": "Fry the garlic for 20 sec.",
+          "timer": 20
+        },
+        {
+          "t": "Add the onion and bell pepper, stir-fry 2 min.",
+          "timer": 120
+        },
+        {
+          "t": "Add the cucumber, tomatoes and pineapple."
+        },
+        {
+          "t": "Pour in the tofu sauce and bring to a boil, about 1 min. Taste: if it needs more tang, add another spoon of vinegar.",
+          "timer": 60
+        },
+        {
+          "t": "Stir the slurry, pour it in and stir 30 sec until the sauce turns glossy.",
+          "timer": 30
+        },
+        {
+          "t": "Add the tofu and the remaining spring onions, toss quickly and serve right away."
+        }
+      ]
+    }
+  ],
+  "tip": "Add the tofu at the very end: it goes soggy fast in the sauce. The noodles are happy to wait 5 minutes under a lid."
+}

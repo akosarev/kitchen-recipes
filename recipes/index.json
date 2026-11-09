@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "recipes": [
+    {
+      "id": "mie-tofu",
+      "title": "Mie Padje + Priauw Waan Tofu",
+      "file": "mie-tofu.json"
+    },
+    {
+      "id": "mie-udang",
+      "title": "Mie Goreng Udang",
+      "file": "mie-udang.json"
+    },
+    {
+      "id": "mie-sayur",
+      "title": "Mie Goreng Sayur",
+      "file": "mie-sayur.json"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "id": "mie-udang",
+  "title": "Mie Goreng Udang",
+  "sub": "Sweet and spicy noodles with shrimp, zucchini, lime and fried shallots.",
+  "time": "about 25 min",
+  "base": 3,
+  "groups": [
+    {
+      "title": "Ingredients",
+      "items": [
+        {
+          "k": "noodles",
+          "q": 375,
+          "u": "g",
+          "n": "egg noodles (mie)"
+        },
+        {
+          "k": "shrimp",
+          "q": 400,
+          "u": "g",
+          "n": "raw peeled shrimp"
+        },
+        {
+          "k": "garlic",
+          "q": 5,
+          "u": "cloves",
+          "n": "garlic"
+        },
+        {
+          "k": "shallot",
+          "q": 3,
+          "u": "",
+          "n": "shallots"
+        },
+        {
+          "k": "chili",
+          "q": 1,
+          "u": "",
+          "n": "red chili (optional)"
+        },
+        {
+          "k": "zucchini",
+          "q": 1,
+          "u": "",
+          "n": "medium zucchini"
+        },
+        {
+          "k": "sprouts",
+          "q": 150,
+          "u": "g",
+          "n": "bean sprouts"
+        },
+        {
+          "k": "eggs",
+          "q": 3,
+          "u": "",
+          "n": "eggs"
+        },
+        {
+          "k": "scallion",
+          "q": 4,
+          "u": "",
+          "n": "spring onions"
+        },
+        {
+          "k": "lime",
+          "q": 1,
+          "u": "",
+          "n": "lime"
+        },
+        {
+          "k": "fried",
+          "q": 3,
+          "u": "tbsp",
+          "n": "fried shallots (bawang goreng)"
+        },
+        {
+          "k": "oil1",
+          "q": 2,
+          "u": "tbsp",
+          "n": "oil (for the shrimp)"
+        },
+        {
+          "k": "oil2",
+          "q": 2,
+          "u": "tbsp",
+          "n": "oil (for the noodles)"
+        }
+      ]
+    },
+    {
+      "title": "Sauce",
+      "items": [
+        {
+          "k": "kecap",
+          "q": 4,
+          "u": "tbsp",
+          "n": "kecap manis"
+        },
+        {
+          "k": "soy",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "soy sauce"
+        },
+        {
+          "k": "oyster",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "oyster sauce"
+        },
+        {
+          "k": "flakes",
+          "q": 0.5,
+          "u": "tsp",
+          "n": "chili flakes"
+        }
+      ]
+    }
+  ],
+  "phases": [
+    {
+      "t": "Prep",
+      "time": "0–10 min",
+      "steps": [
+        {
+          "t": "Put a large pot of water on to boil."
+        },
+        {
+          "t": "Shrimp ({shrimp}): if frozen, cover with cold water for 10 min. Then pat dry with paper towels.",
+          "timer": 600
+        },
+        {
+          "t": "Cut (all on one plate):",
+          "sub": [
+            "Garlic ({garlic}): finely chopped",
+            "Shallots ({shallot}): thin half-rings",
+            "Chili ({chili}): thin rings, seeds out for less heat",
+            "Zucchini ({zucchini}): halve lengthwise, then 0.5 cm half-moons",
+            "Bean sprouts ({sprouts}): rinse"
+          ]
+        },
+        {
+          "t": "Spring onions ({scallion}): sliced into rings. Half for the noodles, half on top when serving."
+        },
+        {
+          "t": "Lime ({lime}): cut into wedges."
+        },
+        {
+          "t": "Sauce (in a cup):",
+          "sub": [
+            "{kecap} kecap manis",
+            "{soy} soy sauce",
+            "{oyster} oyster sauce",
+            "{flakes} chili flakes"
+          ]
+        }
+      ]
+    },
+    {
+      "t": "Noodles and shrimp",
+      "time": "10–15 min",
+      "steps": [
+        {
+          "t": "Noodles ({noodles}) into boiling water for 3–4 min. Drain, rinse with cold water, toss with a few drops of oil.",
+          "timer": 240
+        },
+        {
+          "t": "Meanwhile: heat {oil1} oil in the wok over high heat. Shrimp in a single layer, 1 min per side until pink. Take them out right away or they turn rubbery.",
+          "timer": 120
+        }
+      ]
+    },
+    {
+      "t": "Putting it together",
+      "time": "15–23 min",
+      "steps": [
+        {
+          "t": "In the same wok, heat another {oil2} oil over high heat."
+        },
+        {
+          "t": "Fry the garlic, shallots and chili for 30–45 sec.",
+          "timer": 45
+        },
+        {
+          "t": "Add the zucchini, stir-fry 2–3 min until soft and lightly browned.",
+          "timer": 150
+        },
+        {
+          "t": "Push everything aside, crack in the eggs ({eggs}), scramble 1 min, mix with the vegetables.",
+          "timer": 60
+        },
+        {
+          "t": "Add the noodles, sauce and bean sprouts. Stir-fry 2–3 min, tossing constantly, until the noodles are coated and slightly caramelised.",
+          "timer": 150
+        },
+        {
+          "t": "Return the shrimp and half the spring onions, toss 30–60 sec.",
+          "timer": 45
+        }
+      ]
+    },
+    {
+      "t": "Serve",
+      "time": "",
+      "steps": [
+        {
+          "t": "Plate up, sprinkle with fried shallots ({fried}) and the remaining spring onions. Serve with lime wedges."
+        }
+      ]
+    }
+  ],
+  "tip": "The shrimp are cooked separately and go back in at the very end, so they stay juicy."
+}
