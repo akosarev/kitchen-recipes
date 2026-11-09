@@ -10,8 +10,12 @@
 // - ingredient keys are unique within a recipe
 // - every {k} placeholder in step text and sub-steps names an ingredient key of that recipe
 // - files are UTF-8 without BOM, pretty-printed with 2 spaces and end with one newline
+// Schema 2 (recipes/v2/, read by the app from CP3 on): the same file checks, plus every rule in
+// scripts/schema-v2.mjs (step ids, dependencies without cycles, timings, dishes, phases, alt texts).
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+import { checkIndexV2, checkRecipeV2 } from "./schema-v2.mjs";
 
 const DIR = resolve(process.argv[2] || join(import.meta.dirname, "..", "recipes"));
 const ID = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -29,8 +33,8 @@ const isNum = v => typeof v === "number" && Number.isFinite(v);
 const isObj = v => !!v && typeof v === "object" && !Array.isArray(v);
 
 /** Read and parse a JSON file; checks encoding and formatting. Returns undefined on failure. */
-function readJson(name) {
-  const path = join(DIR, name);
+function readJson(name, dir = DIR) {
+  const path = join(dir, name);
   if (!existsSync(path)) { fail(name, "file not found"); return undefined; }
   const buf = readFileSync(path);
   if (buf[0] === 0xef && buf[1] === 0xbb && buf[2] === 0xbf) fail(name, "has a UTF-8 BOM");
@@ -116,12 +120,40 @@ function main() {
   for (const f of readdirSync(DIR).filter(f => f.endsWith(".json") && f !== "index.json")) {
     if (!listed.has(f)) fail(f, "not listed in index.json");
   }
+  count += validateV2(join(DIR, "v2"));
   if (errors.length) {
     console.error(`recipe validation failed (${errors.length} problem${errors.length === 1 ? "" : "s"}):`);
     for (const e of errors) console.error("  - " + e);
     process.exit(1);
   }
-  console.log(`ok: ${count} recipes valid in ${DIR}`);
+  console.log(`ok: ${count} recipe files valid in ${DIR}`);
 }
 
-main();
+/**
+ * Schema 2 files in recipes/v2/. Returns the number of recipes checked.
+ * @param {string} dir
+ */
+function validateV2(dir) {
+  if (!existsSync(dir)) return 0;
+  const index = readJson("index.json", dir);
+  if (index === undefined) return 0;
+  const where = "v2/index.json";
+  const ierrs = checkIndexV2(index);
+  for (const e of ierrs) fail(where, e);
+  if (ierrs.length) return 0;
+  let n = 0;
+  const listed = new Set();
+  for (const e of index.recipes) {
+    listed.add(e.file);
+    const r = readJson(e.file, dir);
+    if (r === undefined) continue;
+    for (const msg of checkRecipeV2(r, e)) fail("v2/" + e.file, msg);
+    n++;
+  }
+  for (const f of readdirSync(dir).filter(f => f.endsWith(".json") && f !== "index.json")) {
+    if (!listed.has(f)) fail("v2/" + f, "not listed in v2/index.json");
+  }
+  return n;
+}
+
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) main();

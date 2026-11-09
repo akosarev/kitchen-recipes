@@ -1,0 +1,467 @@
+{
+  "schema": 2,
+  "id": "mie-udang",
+  "rev": 1,
+  "title": "Mie Goreng Udang",
+  "sub": "Sweet and spicy noodles with shrimp, zucchini, lime and fried shallots.",
+  "time": "about 25 min",
+  "lang": "en",
+  "base": 3,
+  "dishes": [
+    {
+      "id": "mie",
+      "title": "Mie Goreng Udang",
+      "hot": true
+    }
+  ],
+  "groups": [
+    {
+      "title": "Ingredients",
+      "items": [
+        {
+          "k": "noodles",
+          "ref": "egg_noodles",
+          "q": 375,
+          "u": "g",
+          "n": "egg noodles (mie)",
+          "short": "noodles"
+        },
+        {
+          "k": "shrimp",
+          "ref": "shrimp",
+          "q": 400,
+          "u": "g",
+          "n": "raw peeled shrimp",
+          "short": "shrimp"
+        },
+        {
+          "k": "garlic",
+          "ref": "garlic",
+          "q": 5,
+          "u": "clove",
+          "n": "garlic"
+        },
+        {
+          "k": "shallot",
+          "ref": "shallot",
+          "q": 3,
+          "u": "pc",
+          "n": "shallots"
+        },
+        {
+          "k": "chili",
+          "ref": "chili",
+          "q": 1,
+          "u": "pc",
+          "n": "red chili (optional)",
+          "optional": true
+        },
+        {
+          "k": "zucchini",
+          "ref": "zucchini",
+          "q": 1,
+          "u": "pc",
+          "n": "medium zucchini"
+        },
+        {
+          "k": "sprouts",
+          "ref": "bean_sprouts",
+          "q": 150,
+          "u": "g",
+          "n": "bean sprouts"
+        },
+        {
+          "k": "eggs",
+          "ref": "egg",
+          "q": 3,
+          "u": "pc",
+          "n": "eggs"
+        },
+        {
+          "k": "scallion",
+          "ref": "spring_onion",
+          "q": 4,
+          "u": "pc",
+          "n": "spring onions"
+        },
+        {
+          "k": "lime",
+          "ref": "lime",
+          "q": 1,
+          "u": "pc",
+          "n": "lime"
+        },
+        {
+          "k": "fried",
+          "ref": "fried_shallots",
+          "q": 3,
+          "u": "tbsp",
+          "n": "fried shallots (bawang goreng)",
+          "optional": true
+        },
+        {
+          "k": "oil1",
+          "ref": "oil_neutral",
+          "q": 2,
+          "u": "tbsp",
+          "n": "oil (for the shrimp)"
+        },
+        {
+          "k": "oil2",
+          "ref": "oil_neutral",
+          "q": 2,
+          "u": "tbsp",
+          "n": "oil (for the noodles)"
+        }
+      ]
+    },
+    {
+      "title": "Sauce",
+      "items": [
+        {
+          "k": "kecap",
+          "ref": "kecap_manis",
+          "q": 4,
+          "u": "tbsp",
+          "n": "kecap manis"
+        },
+        {
+          "k": "soy",
+          "ref": "soy_sauce",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "soy sauce"
+        },
+        {
+          "k": "oyster",
+          "ref": "oyster_sauce",
+          "q": 1.5,
+          "u": "tbsp",
+          "n": "oyster sauce"
+        },
+        {
+          "k": "flakes",
+          "ref": "chili_flakes",
+          "q": 0.5,
+          "u": "tsp",
+          "n": "chili flakes"
+        }
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "0.0",
+      "dish": "mie",
+      "t": "Put a large pot of water on to boil.",
+      "hands": "passive",
+      "dur": 480,
+      "after": [],
+      "needs": {
+        "pot": 1,
+        "burner": 1
+      },
+      "technique": "boil"
+    },
+    {
+      "id": "0.1",
+      "dish": "mie",
+      "t": "Shrimp ({shrimp}): if frozen, cover with cold water for 10 min. Then pat dry with paper towels.",
+      "hands": "passive",
+      "dur": 600,
+      "wait": {
+        "min": 480,
+        "ideal": 600,
+        "max": 750
+      },
+      "timer": 600,
+      "after": [],
+      "technique": "soak",
+      "alt": {
+        "shrimp-chicken": {
+          "t": "Chicken ({shrimp}): cut into 2 cm pieces and pat dry with paper towels.",
+          "hands": "active",
+          "dur": 180,
+          "technique": "chop",
+          "timer": null,
+          "wait": null,
+          "then": null
+        },
+        "shrimp-tofu": {
+          "t": "Tofu ({shrimp}): pat dry, cut into 2 cm cubes.",
+          "hands": "active",
+          "dur": 180,
+          "technique": "chop",
+          "timer": null,
+          "wait": null,
+          "then": null
+        }
+      }
+    },
+    {
+      "id": "0.2",
+      "dish": "mie",
+      "t": "Cut (all on one plate):",
+      "sub": [
+        "Garlic ({garlic}): finely chopped",
+        "Shallots ({shallot}): thin half-rings",
+        "Chili ({chili}): thin rings, seeds out for less heat",
+        "Zucchini ({zucchini}): halve lengthwise, then 0.5 cm half-moons",
+        "Bean sprouts ({sprouts}): rinse"
+      ],
+      "hands": "active",
+      "dur": 300,
+      "after": [],
+      "technique": "chop"
+    },
+    {
+      "id": "0.3",
+      "dish": "mie",
+      "t": "Spring onions ({scallion}): sliced into rings. Half for the noodles, half on top when serving.",
+      "hands": "active",
+      "dur": 60,
+      "after": [],
+      "technique": "chop"
+    },
+    {
+      "id": "0.4",
+      "dish": "mie",
+      "t": "Lime ({lime}): cut into wedges.",
+      "hands": "active",
+      "dur": 30,
+      "after": [],
+      "technique": "chop"
+    },
+    {
+      "id": "0.5",
+      "dish": "mie",
+      "t": "Sauce (in a cup):",
+      "sub": [
+        "{kecap} {kecap:n}",
+        "{soy} {soy:n}",
+        "{oyster} {oyster:n}",
+        "{flakes} {flakes:n}"
+      ],
+      "hands": "active",
+      "dur": 60,
+      "after": [],
+      "technique": "mix"
+    },
+    {
+      "id": "1.0",
+      "dish": "mie",
+      "t": "Noodles ({noodles}) into boiling water for 3–4 min. Drain, rinse with cold water, toss with a few drops of oil.",
+      "hands": "passive",
+      "dur": 240,
+      "wait": {
+        "min": 210,
+        "ideal": 240,
+        "max": 270
+      },
+      "timer": 240,
+      "then": "Drain",
+      "after": [
+        "0.0"
+      ],
+      "needs": {
+        "pot": 1,
+        "burner": 1
+      },
+      "technique": "boil"
+    },
+    {
+      "id": "1.1",
+      "dish": "mie",
+      "t": "Meanwhile: heat {oil1} oil in the wok over high heat. Shrimp in a single layer, 1 min per side until pink. Take them out right away or they turn rubbery.",
+      "hands": "active",
+      "dur": 120,
+      "timer": 120,
+      "after": [
+        "0.1"
+      ],
+      "needs": {
+        "wok": 1,
+        "burner": 1
+      },
+      "technique": "fry",
+      "alt": {
+        "shrimp-chicken": {
+          "t": "Meanwhile: heat {oil1} oil in the wok over high heat. Chicken in a single layer, 5–6 min, turning, until cooked through with no pink inside. Take it out.",
+          "dur": 330,
+          "timer": 330
+        },
+        "shrimp-tofu": {
+          "t": "Meanwhile: heat {oil1} oil in the wok over high heat. Tofu in a single layer, 6–8 min, turning, until golden on all sides. Take it out.",
+          "dur": 420,
+          "timer": 420
+        }
+      }
+    },
+    {
+      "id": "2.0",
+      "dish": "mie",
+      "t": "In the same wok, heat another {oil2} oil over high heat.",
+      "hands": "active",
+      "dur": 60,
+      "after": [
+        "1.1"
+      ],
+      "needs": {
+        "wok": 1,
+        "burner": 1
+      },
+      "technique": "fry"
+    },
+    {
+      "id": "2.1",
+      "dish": "mie",
+      "t": "Fry the garlic, shallots and chili for 30–45 sec.",
+      "hands": "active",
+      "dur": 45,
+      "timer": 45,
+      "after": [
+        "2.0",
+        "0.2"
+      ],
+      "needs": {
+        "wok": 1,
+        "burner": 1
+      },
+      "technique": "stirfry"
+    },
+    {
+      "id": "2.2",
+      "dish": "mie",
+      "t": "Add the zucchini, stir-fry 2–3 min until soft and lightly browned.",
+      "hands": "active",
+      "dur": 150,
+      "timer": 150,
+      "after": [
+        "2.1"
+      ],
+      "needs": {
+        "wok": 1,
+        "burner": 1
+      },
+      "technique": "stirfry"
+    },
+    {
+      "id": "2.3",
+      "dish": "mie",
+      "t": "Push everything aside, crack in the eggs ({eggs}), scramble 1 min, mix with the vegetables.",
+      "hands": "active",
+      "dur": 60,
+      "timer": 60,
+      "after": [
+        "2.2"
+      ],
+      "needs": {
+        "wok": 1,
+        "burner": 1
+      },
+      "technique": "stirfry"
+    },
+    {
+      "id": "2.4",
+      "dish": "mie",
+      "t": "Add the noodles, sauce and bean sprouts. Stir-fry 2–3 min, tossing constantly, until the noodles are coated and slightly caramelised.",
+      "hands": "active",
+      "dur": 150,
+      "timer": 150,
+      "after": [
+        "2.3",
+        "1.0",
+        "0.5"
+      ],
+      "needs": {
+        "wok": 1,
+        "burner": 1
+      },
+      "technique": "toss"
+    },
+    {
+      "id": "2.5",
+      "dish": "mie",
+      "t": "Return the {shrimp:n} and half the spring onions, toss 30–60 sec.",
+      "hands": "active",
+      "dur": 45,
+      "timer": 45,
+      "after": [
+        "2.4",
+        "0.3"
+      ],
+      "needs": {
+        "wok": 1,
+        "burner": 1
+      },
+      "technique": "toss"
+    },
+    {
+      "id": "3.0",
+      "dish": "mie",
+      "t": "Plate up, sprinkle with fried shallots ({fried}) and the remaining spring onions. Serve with lime wedges.",
+      "hands": "active",
+      "dur": 60,
+      "after": [
+        "2.5",
+        "0.4"
+      ],
+      "technique": "plate"
+    }
+  ],
+  "phases": [
+    {
+      "t": "Prep",
+      "window": "0–10 min",
+      "stepIds": [
+        "0.0",
+        "0.1",
+        "0.2",
+        "0.3",
+        "0.4",
+        "0.5"
+      ]
+    },
+    {
+      "t": "Noodles and shrimp",
+      "window": "10–15 min",
+      "stepIds": [
+        "1.0",
+        "1.1"
+      ]
+    },
+    {
+      "t": "Putting it together",
+      "window": "15–23 min",
+      "stepIds": [
+        "2.0",
+        "2.1",
+        "2.2",
+        "2.3",
+        "2.4",
+        "2.5"
+      ]
+    },
+    {
+      "t": "Serve",
+      "window": "",
+      "stepIds": [
+        "3.0"
+      ]
+    }
+  ],
+  "tip": "The shrimp are cooked separately and go back in at the very end, so they stay juicy.",
+  "alt": {
+    "shrimp-chicken": {
+      "sub": "Sweet and spicy noodles with chicken, zucchini, lime and fried shallots.",
+      "tip": "The chicken is cooked separately and goes back in at the very end, so it stays juicy."
+    },
+    "shrimp-tofu": {
+      "sub": "Sweet and spicy noodles with tofu, zucchini, lime and fried shallots.",
+      "tip": "The tofu is cooked separately and goes back in at the very end, so it stays crisp."
+    }
+  },
+  "source": {
+    "kind": "seed"
+  }
+}

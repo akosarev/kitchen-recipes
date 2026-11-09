@@ -7,9 +7,10 @@ The app itself is published here too: https://akosarev.github.io/kitchen-recipes
 
 | Path | What |
 |---|---|
-| `recipes/index.json` | List of recipes, in display order. |
-| `recipes/<id>.json` | One recipe per file. The file name is the recipe id. |
+| `recipes/v2/index.json`, `recipes/v2/<id>.json` | Format version 2: what the app reads from its CP3 release on. |
+| `recipes/index.json`, `recipes/<id>.json` | Format version 1, kept for app versions from before CP3. Do not edit; they are removed once no older app is in use. |
 | `scripts/validate.mjs` | Checks every recipe file (Node 20+, no dependencies). |
+| `scripts/schema-v2.mjs` | The format 2 rules. The app ships a byte-identical copy and checks every file it loads with it. |
 | `.github/workflows/pages.yml` | Publishes the site: the app from branch `app` plus `recipes/` from `main`. |
 | `.github/workflows/validate.yml` | Runs the checks on pull requests and feature branches. |
 
@@ -21,7 +22,29 @@ It carries a copy of `.github/workflows/pages.yml` taken from `main` at deploy t
 The app repo pins this repo as a git submodule, so commits it points at must stay reachable on
 `main`: merge into `main` with a fast-forward or a merge commit, never squash or rebase.
 
-## Format
+## Format 2 (`recipes/v2/`)
+
+`recipes/v2/index.json` is like format 1 below with `"version": 2`. Each `recipes/v2/<id>.json`:
+
+| Field | Type | Meaning |
+|---|---|---|
+| `schema` | `2` | Format version. |
+| `id`, `title`, `sub`, `time`, `tip` | string | As in format 1. |
+| `rev` | integer | Revision, from 1. |
+| `lang` | `en`, `ru`, `nl` or `id` | Language of the texts. |
+| `base` | integer 1-12 | Servings the quantities are written for. |
+| `dishes` | array | 1 or 2 dishes cooked in parallel: `{ "id", "title", "hot" }` (id lowercase, not `shared`). |
+| `groups[].items[]` | object | `k` (key; no `__`), `ref` (ingredient id in the app's allergen table), `q` (number, or `null` with unit `to_taste`), `u` (`g`, `kg`, `ml`, `l`, `tsp`, `tbsp`, `cup`, `pc`, `clove`, `pinch`, `to_taste`), `n` (name), optional `short` (name in step text), `scale` (`linear`/`none`), `core` (the dish is this ingredient), `optional` (garnish). |
+| `steps[]` | object | `id` (`"<phase>.<step>"`, its position in `phases`), `dish` (a dish id or `shared`), `t` and `sub` (text; `{k}` = amount, `{k:n}` = name), `hands` (`active`/`passive`), `dur` (seconds), optional `wait` (`{min, ideal, max}` seconds, passive steps; `dur` and `timer` equal `ideal`), `timer` (seconds), `then` (one word for the alarm), `after` (step ids it waits for; no cycles), `needs` (`{burner, wok, pan, pot, oven}` counts), `technique`, `alt` (texts per substitution rule, see below). |
+| `phases[]` | object | `{ "t", "window", "stepIds" }`: the reading view; `window` is the author's time range (`"10–25 min"`). |
+| `alt` | object | Optional, per substitution rule id: `{ "sub", "tip" }` when a swap makes them wrong. |
+| `source` | object | `{ "kind": "seed" \| "manual" \| "import", "url"? }`. |
+
+`steps[].alt` holds a step's own text (and timing) for a swap that changes how it is cooked, keyed by the
+app's substitution rule id, e.g. `"shrimp-chicken": { "t": "… until cooked through …", "dur": 330, "timer": 330 }`.
+The app uses such a swap only when every step showing the ingredient's amount has one.
+
+## Format 1 (`recipes/`)
 
 `recipes/index.json`:
 
@@ -65,7 +88,9 @@ node scripts/validate.mjs
 ```
 
 It fails when a file does not parse, an id does not match its file name or the index, a file is
-missing from the index, a field has the wrong type, or a `{k}` placeholder names no ingredient.
+missing from the index, a field has the wrong type, or a `{k}` placeholder names no ingredient; for
+format 2 also on step ids that are not their position, unknown or cyclic dependencies, inconsistent
+waits and timers, unknown dishes, units or equipment, and bad `alt` entries.
 
 ## License
 
