@@ -1,7 +1,7 @@
 {
   "schema": 2,
   "id": "mie-tofu",
-  "rev": 1,
+  "rev": 2,
   "title": "Mie Padje + Priauw Waan Tofu",
   "sub": "Fried noodles and crispy sweet-and-sour tofu. Two dishes, ready at the same time.",
   "time": "about 45 min",
@@ -368,12 +368,12 @@
     {
       "id": "1.1",
       "dish": "tofu",
-      "t": "Heat {oilFry} oil in the wok over high heat.",
+      "t": "Heat {oilFry} oil in a large frying pan over high heat.",
       "hands": "active",
       "dur": 120,
       "after": [],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "fry"
@@ -390,7 +390,7 @@
         "1.1"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "fry"
@@ -420,12 +420,10 @@
     {
       "id": "2.0",
       "dish": "mie",
-      "t": "In the same wok, heat {oilN} oil over high heat.",
+      "t": "In the wok, heat {oilN} oil over high heat.",
       "hands": "active",
       "dur": 60,
-      "after": [
-        "1.2"
-      ],
+      "after": [],
       "needs": {
         "wok": 1,
         "burner": 1
@@ -530,14 +528,14 @@
     {
       "id": "3.0",
       "dish": "tofu",
-      "t": "Wipe the wok with a paper towel and add {oilT} oil.",
+      "t": "Wipe the tofu pan with a paper towel and add {oilT} oil.",
       "hands": "active",
       "dur": 60,
       "after": [
-        "2.6"
+        "1.2"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "fry"
@@ -554,7 +552,7 @@
         "0.2"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "stirfry"
@@ -570,7 +568,7 @@
         "3.1"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "stirfry"
@@ -585,7 +583,7 @@
         "3.2"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "toss"
@@ -602,7 +600,7 @@
         "0.5"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "simmer"
@@ -619,7 +617,7 @@
         "0.6"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "simmer"
@@ -636,7 +634,7 @@
         "0.4"
       ],
       "needs": {
-        "wok": 1,
+        "pan": 1,
         "burner": 1
       },
       "technique": "toss"
