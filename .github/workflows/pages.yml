@@ -1,0 +1,92 @@
+name: Publish site
+
+# The site = the app (branch `app`, written by kitchen-master's CI) + the recipes (branch `main`).
+# It is rebuilt when either side changes.
+#
+# Note on the `app` trigger: GitHub runs the workflow file found in the pushed commit, so the
+# deploy in kitchen-master copies this file (from `main`, at deploy time) into every `app` commit.
+# Whatever branch triggers the run, the job below always checks out `main` and `app` explicitly,
+# and a run from `app` refuses to publish when its copy of this file differs from main's.
+# The `github-pages` environment must allow deployments from both `main` and `app`
+# (Settings > Environments > github-pages > Deployment branches).
+
+on:
+  push:
+    branches: [main, app]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out the recipes (main)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          path: main
+
+      - name: Validate recipes
+        run: node main/scripts/validate.mjs main/recipes
+
+      - name: Require the app branch
+        run: |
+          if ! git -C main ls-remote --exit-code --heads origin app >/dev/null; then
+            echo "::error title=No app branch::Branch 'app' does not exist yet. It is created by the kitchen-master deploy (deploy.yml). Nothing was published."
+            exit 1
+          fi
+
+      - name: Check out the app (app)
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: app
+          path: app
+
+      - name: Require the same pipeline as main
+        if: github.ref == 'refs/heads/app'
+        run: |
+          if ! cmp -s main/.github/workflows/pages.yml app/.github/workflows/pages.yml; then
+            echo "::error title=Stale pages.yml::This run comes from branch 'app', whose pages.yml differs from main's. Redeploy kitchen-master (deploy.yml) so 'app' carries the current file. Nothing was published."
+            exit 1
+          fi
+
+      - name: Assemble the site
+        run: |
+          mkdir _site
+          # The app files, without git metadata or the workflow carrier copy.
+          tar -C app --exclude=./.git --exclude=./.github -cf - . | tar -C _site -xf -
+          rm -rf _site/recipes
+          cp -R main/recipes _site/recipes
+          touch _site/.nojekyll
+          for f in index.html sw.js precache.js manifest.webmanifest recipes/index.json; do
+            if [ ! -f "_site/$f" ]; then
+              echo "::error title=Incomplete site::_site/$f is missing; refusing to publish."
+              exit 1
+            fi
+          done
+          find _site -type f | sort
+
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

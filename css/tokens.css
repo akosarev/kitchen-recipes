@@ -1,0 +1,52 @@
+/* Colour tokens, light and dark. Moved verbatim from legacy/index.html; CP2 adds the Lighthouse and
+   status colours (teal / amber / red, each always paired with a word and an icon). */
+:root{
+  --bg:#E9EFEA; --surface:#FFFFFF; --ink:#1F2A24; --muted:#5D6B63; --line:#CFD9D2;
+  --accent:#E8B422; --on-accent:#1F2A24; --chili:#B8321F; --on-chili:#FFFFFF; --done:#8A968F;
+  --teal:#0F7C7A; --amber:#B86E00; --red:#C0271B; --on-alarm:#FFFFFF; --ok:#2E7D4F;
+  --warn-bg:#FFE7B8; --warn-ink:#4A2E00; --bad-bg:#C0271B; --bad-ink:#FFFFFF;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131916; --surface:#1D2521; --ink:#E6EDE8; --muted:#9AA8A0; --line:#2E3934;
+    --accent:#EDBB2F; --on-accent:#1A1406; --chili:#E0563F; --on-chili:#1A0A06; --done:#66736C;
+    --teal:#3CC3BE; --amber:#F2A93B; --red:#FF6B5E; --on-alarm:#1A0A06; --ok:#5CC98A;
+    --warn-bg:#4A3300; --warn-ink:#FFE7B8; --bad-bg:#8E1B12; --bad-ink:#FFFFFF;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131916; --surface:#1D2521; --ink:#E6EDE8; --muted:#9AA8A0; --line:#2E3934;
+  --accent:#EDBB2F; --on-accent:#1A1406; --chili:#E0563F; --on-chili:#1A0A06; --done:#66736C;
+  --teal:#3CC3BE; --amber:#F2A93B; --red:#FF6B5E; --on-alarm:#1A0A06; --ok:#5CC98A;
+  --warn-bg:#4A3300; --warn-ink:#FFE7B8; --bad-bg:#8E1B12; --bad-ink:#FFFFFF;
+  color-scheme: dark;
+}
+
+/* CP3: dish colours (lanes, strips, step tags; always next to the dish name or a phase number),
+   and the "check label" chip (amber, always with the words "Check label"). */
+:root{
+  --d0:#E8B422; --on-d0:#1F2A24; --d1:#4E9A68; --on-d1:#0E2016; --d-soft0:#FBF0CC; --d-soft1:#DCEFE2;
+  --chip-on:#1F2A24; --on-chip-on:#FFFFFF; --swap:#0F6E6C;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --d0:#EDBB2F; --on-d0:#1A1406; --d1:#6FC08A; --on-d1:#0B1A10; --d-soft0:#3A3214; --d-soft1:#1E3A28;
+    --chip-on:#E6EDE8; --on-chip-on:#131916; --swap:#5FD3CF;
+  }
+}
+:root[data-theme="dark"]{
+  --d0:#EDBB2F; --on-d0:#1A1406; --d1:#6FC08A; --on-d1:#0B1A10; --d-soft0:#3A3214; --d-soft1:#1E3A28;
+  --chip-on:#E6EDE8; --on-chip-on:#131916; --swap:#5FD3CF;
+}
+
+/* CP4: lanes 3 and 4 when two recipes are cooked together. */
+:root{ --d2:#D9822B; --on-d2:#24130A; --d3:#5B8FD6; --on-d3:#0A1424; --d-soft2:#FBE3CB; --d-soft3:#DDE8F8; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --d2:#F0A35A; --on-d2:#24130A; --d3:#83AEEA; --on-d3:#0A1424; --d-soft2:#3D2A17; --d-soft3:#1C2A40; }
+}
+:root[data-theme="dark"]{ --d2:#F0A35A; --on-d2:#24130A; --d3:#83AEEA; --on-d3:#0A1424; --d-soft2:#3D2A17; --d-soft3:#1C2A40; }
